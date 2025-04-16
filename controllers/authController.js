@@ -22,7 +22,6 @@ exports.registerUser = async (req, res) => {
 exports.loginUser = async (req, res) => {
     const { email, password } = req.body;
 
-
     try {
         const user = await db.oneOrNone('SELECT * FROM users WHERE email = $1', [email]);
 
@@ -39,12 +38,12 @@ exports.loginUser = async (req, res) => {
 
 
         req.session.user = { id: user.id, name: user.name, email: user.email };
-        // res.json({ message: 'Login successful', user: req.session.user });
+
+
         res.redirect('/home');
 
 
     } catch (err) {
-        console.error("Error:", err.message);
         res.status(500).json({ error: 'Error logging in' });
     }
 };

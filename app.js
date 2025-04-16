@@ -49,6 +49,7 @@ app.use('/auth', authRoutes);
 app.use('/', homeRoutes);
 app.use('/', profileRoutes);
 app.use("/", bookRoutes);
+app.use("/", bookRoutes);
 
 
 //for db connection
@@ -66,3 +67,4 @@ app.get('/db-test', async (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
+
